@@ -4,12 +4,9 @@ on:
   schedule:
     - cron: '0 16,22,04,10 * * *'
   workflow_dispatch:
-    branches:
-      - master
-      - dev
-      - gd
+
 jobs:
-  push:
+  update-schedule:
     runs-on: ${{ matrix.operating-system }}
     strategy:
       matrix:
