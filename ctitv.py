@@ -20,8 +20,8 @@ def get_stream_url(youtube_url):
 def append_to_m3u_file(stream_url, target_file="output/rtp/shanghai.m3u"):
     """将中天新闻的频道信息追加到目标 M3U 文件的底部"""
     if stream_url:
-        # 中天新闻的频道信息
-        channel_entry = f"""#EXTINF:-1, 中天新闻
+        # 中天新闻的频道信息，包含台标和分类
+        channel_entry = f"""#EXTINF:-1 tvg-name="中天新闻" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/config/ctitv.png" group-title="📺专题频道", 中天新闻
 {stream_url}
 """
         # 确保输出目录存在
