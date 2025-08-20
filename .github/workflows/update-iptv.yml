@@ -1,0 +1,61 @@
+name: Update IPTV Streams
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'  # 每小时运行一次
+  workflow_dispatch:        # 允许手动触发
+
+jobs:
+  update-iptv:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: master  # 明确指定拉取 master 分支
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install yt-dlp
+        run: |
+          python -m pip install yt-dlp
+
+      - name: Create output directory
+        run: mkdir -p output/rtp config/rtp
+
+      - name: Save cookies file from secrets
+        run: |
+          echo "${{ secrets.YOUTUBE_COOKIES }}" > cookies.txt
+          echo "Cookies file created from GitHub Secrets."
+
+      - name: Verify cookies file content (debug)
+        run: |
+          if [ -f "cookies.txt" ]; then
+            echo "Cookies file exists."
+            head -n 5 cookies.txt
+          else
+            echo "Cookies file does not exist."
+          fi
+
+      - name: Run RTP to M3U conversion script
+        run: python convert_rtp_to_m3u.py
+
+      - name: Run script to update CTITV stream
+        run: python ctitv.py
+
+      - name: List output files
+        run: |
+          echo "Generated output files:"
+          find output/rtp -type f | sort
+          find config/rtp -type f | sort
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add output/rtp/ config/rtp/
+          git commit -m "Update IPTV streams (RTP to M3U and CTITV stream to shanghai.txt)" -a || echo "No changes to commit"
+          git push origin master || echo "Failed to push changes"
