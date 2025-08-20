@@ -264,3 +264,9 @@ jobs:
           git add output/rtp/ config/rtp/
           git commit -m "Update IPTV streams (RTP to M3U and CTITV stream to shanghai.txt)" -a || echo "No changes to commit"
           git push origin master || echo "Failed to push changes"
+      -
+        name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          retain_days: 0
+          keep_minimum_runs: 2
