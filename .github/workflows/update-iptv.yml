@@ -2,8 +2,8 @@ name: Update IPTV Streams
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # 每2小时运行一次
-  workflow_dispatch:        # 允许手动触发
+    - cron: '0 */4 * * *'  # 每4小时运行一次
+  workflow_dispatch:
 
 jobs:
   update-iptv:
@@ -12,31 +12,29 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
         with:
-          ref: master  # 明确指定拉取 master 分支
+          ref: master
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
-      - name: Install yt-dlp
+      - name: Install dependencies
         run: |
-          python -m pip install yt-dlp requests
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser chromium-chromedriver
+          python -m pip install yt-dlp selenium webdriver-manager
 
       - name: Create output directory
         run: mkdir -p output/rtp config/rtp
 
-      - name: Set up environment variables
+      - name: Set up Chrome driver
         run: |
-          echo "YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}" >> $GITHUB_ENV
+          sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
+          sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
 
-      - name: Verify API Key (debug)
-        run: |
-          if [ -n "$YOUTUBE_API_KEY" ]; then
-            echo "API Key is set (length: ${#YOUTUBE_API_KEY})"
-          else
-            echo "API Key is not set"
-          fi
+      - name: Run script to update CTITV stream
+        run: python ctitv.py
 
       - name: Create conversion script
         run: |
@@ -246,9 +244,6 @@ jobs:
       - name: Run RTP to M3U conversion script
         run: python convert_rtp_to_m3u.py
 
-      - name: Run script to update CTITV stream
-        run: python ctitv.py
-
       - name: List output files
         run: |
           echo "Generated output files:"
@@ -259,12 +254,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add output/rtp/ config/rtp/
-          git commit -m "Update IPTV streams (RTP to M3U and CTITV stream to shanghai.txt)" -a || echo "No changes to commit"
+          git add output/rtp/ config/rtp/ cookies.txt
+          git commit -m "Auto-update IPTV streams with fresh cookies" -a || echo "No changes to commit"
           git push origin master || echo "Failed to push changes"
-      -
-        name: Delete workflow runs
+
+      - name: Clean up workflow runs
         uses: Mattraks/delete-workflow-runs@v2
         with:
-          retain_days: 0
-          keep_minimum_runs: 2
+          retain_days: 1
+          keep_minimum_runs: 3
