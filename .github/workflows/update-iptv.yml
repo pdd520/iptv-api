@@ -56,7 +56,7 @@ jobs:
           os.makedirs("output/rtp", exist_ok=True)
           
           # 频道LOGO基础URL
-          LOGO_BASE_URL = "https://raw.githubusercontent.com/fanmingming/live/main/tv/"
+          LOGO_BASE_URL = "https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/"
 
           # 频道分组和标识映射
           def get_channel_info(channel_name):
