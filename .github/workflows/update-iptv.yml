@@ -28,13 +28,37 @@ jobs:
       - name: Create output directory
         run: mkdir -p output/rtp config/rtp
 
-      - name: Set up Chrome driver
+      - name: Set up Chrome driver (safe method)
         run: |
-          sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
-          sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+          # 检查是否已安装 Chrome，如果已安装则使用现有版本
+          if [ ! -f "/usr/bin/google-chrome" ]; then
+            sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
+          fi
+          
+          # 设置 chromedriver
+          if [ ! -f "/usr/bin/chromedriver" ]; then
+            sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+          fi
+          
+          # 验证安装
+          which google-chrome || echo "Google Chrome not found"
+          which chromedriver || echo "ChromeDriver not found"
 
       - name: Run script to update CTITV stream
-        run: python ctitv.py
+        run: |
+          # 使用 webdriver-manager 自动管理浏览器驱动
+          python -c "
+          from webdriver_manager.chrome import ChromeDriverManager
+          from selenium import webdriver
+          from selenium.webdriver.chrome.service import Service
+          import os
+          
+          # 设置 ChromeDriver
+          driver_path = ChromeDriverManager().install()
+          os.environ['WEBDRIVER_CHROME_DRIVER'] = driver_path
+          print(f'ChromeDriver installed at: {driver_path}')
+          "
+          python ctitv.py
 
       - name: Create conversion script
         run: |
@@ -120,7 +144,7 @@ jobs:
                       info["tvg_logo"] = f"{LOGO_BASE_URL}体育.png"
                   elif "音乐" in clean_name:
                       info["tvg_logo"] = f"{LOGO_BASE_URL}音乐.png"
-                  elif "少儿" in clean_name or "动画" in clean_name:
+                  elif "少儿" in clean_name or "animation" in clean_name.lower():
                       info["tvg_logo"] = f"{LOGO_BASE_URL}少儿.png"
                   elif "纪录" in clean_name or "探索" in clean_name:
                       info["tvg_logo"] = f"{LOGO_BASE_URL}纪录.png"
@@ -254,7 +278,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add output/rtp/ config/rtp/ cookies.txt
+          git add output/rtp/ config/rtp/
           git commit -m "Auto-update IPTV streams with fresh cookies" -a || echo "No changes to commit"
           git push origin master || echo "Failed to push changes"
 
