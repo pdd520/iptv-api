@@ -1,5 +1,5 @@
 #EXTM3U
-#Created by GitHub Actions: 2025-08-23 00:38:14 UTC
+#Created by GitHub Actions: 2025-08-23 00:43:20 UTC
 #Source: 内蒙古_电信
 
 #EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CCTV1.png" group-title="📺央视频道",CCTV1
@@ -138,7 +138,7 @@ rtp://239.29.0.207:5000
 rtp://239.29.0.208:5000
 #EXTINF:-1 tvg-name="军旅剧场" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/军旅剧场.png" group-title="📺专题频道",军旅剧场
 rtp://239.29.1.35:5001
-#EXTINF:-1 tvg-name="动画" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/动画.png" group-title="📺专题频道",动画
+#EXTINF:-1 tvg-name="动画" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/少儿.png" group-title="📺专题频道",动画
 rtp://239.29.1.38:5001
 #EXTINF:-1 tvg-name="包头新闻" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/包头新闻.png" group-title="📺专题频道",包头新闻
 rtp://239.29.0.111:5000
