@@ -1,6 +1,7 @@
 import subprocess
 import os
 import time
+import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -10,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 
 def setup_selenium():
-    """设置 Selenium WebDriver（使用 webdriver-manager）"""
+    """设置 Selenium WebDriver"""
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -19,46 +20,104 @@ def setup_selenium():
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
     chrome_options.add_argument("--lang=zh-CN")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+    chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+    chrome_options.add_experimental_option('useAutomationExtension', False)
     
     # 使用 webdriver-manager 自动管理驱动
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
+    
+    # 隐藏自动化特征
+    driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+    
     return driver
 
-def get_fresh_cookies():
-    """自动获取新的 YouTube cookies"""
-    print("开始自动获取新的 YouTube cookies...")
+def save_cookies_netscape_format(cookies, filename="cookies.txt"):
+    """保存 cookies 为 Netscape 格式"""
+    with open(filename, 'w', encoding='utf-8') as f:
+        f.write("# Netscape HTTP Cookie File\n")
+        f.write("# This file contains cookies for YouTube\n")
+        f.write("# HttpOnly cookies are included\n\n")
+        
+        for cookie in cookies:
+            if 'youtube.com' in cookie.get('domain', ''):
+                domain = cookie['domain']
+                if domain.startswith('.'):
+                    domain = domain[1:]  # 移除开头的点
+                
+                flag = "TRUE" if cookie.get('httpOnly', False) else "FALSE"
+                path = cookie.get('path', '/')
+                secure = "TRUE" if cookie.get('secure', False) else "FALSE"
+                expiry = str(cookie.get('expiry', int(time.time()) + 3600))
+                name = cookie['name']
+                value = cookie['value']
+                
+                f.write(f"{domain}\t{flag}\t{path}\t{secure}\t{expiry}\t{name}\t{value}\n")
+
+def get_complete_youtube_cookies():
+    """获取完整的 YouTube cookies（通过模拟用户行为）"""
+    print("开始获取完整的 YouTube cookies...")
     
     driver = setup_selenium()
     
     try:
-        # 访问 YouTube 主页
+        # 第一步：访问 YouTube 主页
+        print("访问 YouTube 主页...")
         driver.get("https://www.youtube.com")
-        print("访问 YouTube 主页")
-        time.sleep(5)  # 增加等待时间
+        time.sleep(5)
         
         # 等待页面加载
         WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.TAG_NAME, "body"))
         )
         
-        # 获取 cookies
+        # 模拟一些用户行为
+        print("模拟用户行为...")
+        try:
+            # 滚动页面
+            driver.execute_script("window.scrollTo(0, 500)")
+            time.sleep(2)
+            
+            # 点击一些元素（如果有的话）
+            try:
+                accept_button = driver.find_elements(By.XPATH, "//button[contains(., '接受') or contains(., '同意') or contains(., 'Accept')]")
+                if accept_button:
+                    accept_button[0].click()
+                    print("点击了同意按钮")
+                    time.sleep(3)
+            except:
+                pass
+                
+        except Exception as e:
+            print(f"模拟用户行为时出错: {e}")
+        
+        # 等待更长时间确保 cookies 加载完整
+        time.sleep(8)
+        
+        # 获取所有 cookies
         cookies = driver.get_cookies()
+        print(f"获取到 {len(cookies)} 个 cookies")
         
-        # 保存为 Netscape 格式的 cookies.txt
-        with open('cookies.txt', 'w') as f:
-            f.write("# Netscape HTTP Cookie File\n")
-            for cookie in cookies:
-                if 'youtube.com' in cookie.get('domain', ''):
-                    expiry = cookie.get('expiry', 0)
-                    if isinstance(expiry, (int, float)) and expiry > 0:
-                        expiry = int(expiry)
-                    else:
-                        expiry = 0
-                    
-                    f.write(f"{cookie['domain']}\tTRUE\t/\tTRUE\t{expiry}\t{cookie['name']}\t{cookie['value']}\n")
+        # 筛选出 YouTube 相关的 cookies
+        youtube_cookies = [c for c in cookies if 'youtube.com' in c.get('domain', '')]
+        print(f"其中 {len(youtube_cookies)} 个是 YouTube cookies")
         
-        print(f"成功获取 {len([c for c in cookies if 'youtube.com' in c.get('domain', '')])} 个 YouTube cookies")
+        # 保存为正确的 Netscape 格式
+        save_cookies_netscape_format(youtube_cookies)
+        
+        # 验证 cookies 文件
+        if os.path.exists("cookies.txt"):
+            with open("cookies.txt", "r") as f:
+                lines = f.readlines()
+                print(f"Cookies 文件包含 {len(lines)} 行")
+                
+                # 检查是否包含重要的 cookies
+                content = "\n".join(lines)
+                important_cookies = ['VISITOR_INFO1_LIVE', 'PREF', 'YSC', 'LOGIN_INFO']
+                found_cookies = [cookie for cookie in important_cookies if cookie in content]
+                print(f"找到重要 cookies: {found_cookies}")
+        
         return True
         
     except Exception as e:
@@ -68,12 +127,34 @@ def get_fresh_cookies():
     finally:
         driver.quit()
 
-def get_stream_url_with_retry(youtube_url, max_retries=3):
-    """带重试机制的获取流地址函数"""
+def test_cookies_validity():
+    """测试 cookies 是否有效"""
+    if not os.path.exists("cookies.txt"):
+        return False
+    
+    try:
+        # 使用 yt-dlp 测试一个公开视频（不需要认证的）
+        test_url = "https://www.youtube.com/watch?v=jNQXAC9IVRw"  # 一个著名的公开视频
+        
+        result = subprocess.run([
+            "yt-dlp", 
+            "--get-url",
+            "--cookies", "cookies.txt",
+            test_url
+        ], capture_output=True, text=True, timeout=30)
+        
+        return result.returncode == 0 and result.stdout.strip() != ""
+    except:
+        return False
+
+def get_stream_url_advanced(youtube_url):
+    """高级方法获取流地址"""
+    max_retries = 2
+    
     for attempt in range(max_retries):
         try:
-            # 首先尝试使用现有 cookies
-            if os.path.exists('cookies.txt'):
+            # 首先尝试使用 cookies
+            if os.path.exists("cookies.txt"):
                 result = subprocess.run([
                     "yt-dlp", 
                     "--get-url",
@@ -86,29 +167,29 @@ def get_stream_url_with_retry(youtube_url, max_retries=3):
                     print(f"✅ 成功获取流地址 (尝试 {attempt + 1})")
                     return stream_url
             
-            # 如果失败，获取新的 cookies 并重试
+            # 如果失败，获取新的 cookies
             if attempt < max_retries - 1:
-                print(f"尝试 {attempt + 1} 失败，获取新的 cookies...")
-                get_fresh_cookies()
-                time.sleep(2)  # 等待一下再重试
+                print(f"尝试 {attempt + 1} 失败，获取新的完整 cookies...")
+                get_complete_youtube_cookies()
+                time.sleep(3)
                 
         except subprocess.CalledProcessError as e:
-            print(f"❌ 尝试 {attempt + 1} 失败: {e.stderr}")
+            print(f"❌ 尝试 {attempt + 1} 失败")
             if attempt < max_retries - 1:
-                get_fresh_cookies()
-                time.sleep(2)
+                get_complete_youtube_cookies()
+                time.sleep(3)
         except Exception as e:
             print(f"❌ 尝试 {attempt + 1} 错误: {e}")
             if attempt < max_retries - 1:
-                get_fresh_cookies()
-                time.sleep(2)
+                get_complete_youtube_cookies()
+                time.sleep(3)
     
     return None
 
 def get_stream_url(youtube_url):
     """获取 YouTube 直播流地址"""
     print(f"正在处理: {youtube_url}")
-    return get_stream_url_with_retry(youtube_url)
+    return get_stream_url_advanced(youtube_url)
 
 # 以下 append_to_m3u_file 和 append_to_shanghai_txt 函数保持不变
 def append_to_m3u_file(channels, target_file="output/rtp/shanghai.m3u"):
