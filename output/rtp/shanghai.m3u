@@ -1,5 +1,5 @@
 #EXTM3U
-#Created by GitHub Actions: 2025-08-23 02:11:49 UTC
+#Created by GitHub Actions: 2025-08-23 03:44:12 UTC
 #Source: shanghai
 
 #EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CCTV1.png" group-title="📺央视频道",CCTV1综合
@@ -36,14 +36,12 @@ rtp://239.45.3.23:5140
 rtp://239.45.1.200:5140
 #EXTINF:-1 tvg-name="CCTV-17" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CCTV17.png" group-title="📺央视频道",CCTV-17农村农业
 rtp://239.45.3.52:5140
-#EXTINF:-1 tvg-name="三沙卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/三沙卫视.png" group-title="📺卫视频道",三沙卫视
-rtp://239.45.1.82:5140
 #EXTINF:-1 tvg-name="东南卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/东南卫视.png" group-title="📺卫视频道",东南卫视
 rtp://239.45.1.121:5140
+#EXTINF:-1 tvg-name="东方卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/东方卫视.png" group-title="📺卫视频道",东方卫视
+rtp://239.45.3.146:5140
 #EXTINF:-1 tvg-name="云南卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/云南卫视.png" group-title="📺卫视频道",云南卫视
 rtp://239.45.0.4:5140
-#EXTINF:-1 tvg-name="兵团卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/兵团卫视.png" group-title="📺卫视频道",兵团卫视
-rtp://239.45.1.117:5140
 #EXTINF:-1 tvg-name="内蒙古卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/内蒙古卫视.png" group-title="📺卫视频道",内蒙古卫视
 rtp://239.45.1.238:5140
 #EXTINF:-1 tvg-name="北京卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/北京卫视.png" group-title="📺卫视频道",北京卫视
@@ -66,8 +64,6 @@ rtp://239.45.1.229:5140
 rtp://239.45.3.230:5140
 #EXTINF:-1 tvg-name="广西卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/广西卫视.png" group-title="📺卫视频道",广西卫视
 rtp://239.45.0.5:5140
-#EXTINF:-1 tvg-name="康巴卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/康巴卫视.png" group-title="📺卫视频道",康巴卫视
-rtp://239.45.1.251:5140
 #EXTINF:-1 tvg-name="新疆卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/新疆卫视.png" group-title="📺卫视频道",新疆卫视
 rtp://239.45.1.116:5140
 #EXTINF:-1 tvg-name="江苏卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/江苏卫视.png" group-title="📺卫视频道",江苏卫视
@@ -105,4 +101,4 @@ rtp://239.45.1.230:5140
 #EXTINF:-1 tvg-name="黑龙江卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/黑龙江卫视.png" group-title="📺卫视频道",黑龙江卫视
 rtp://239.45.3.232:5140
 #EXTINF:-1 tvg-name="中天电视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CtiNews.png" group-title="📺专题频道", 中天电视
-https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1755936712/ei/aCOpaKPbCqyGkucP2ryYuQU/ip/135.119.239.34/id/vr3XyVCR4T0.2/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr3---sn-vgqsrnzz.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/siu/1/bui/AY1jyLPx7VAfN92Z8jBXBNN2FBnz4QJT1OFmweo_Qk1Pmlno2xpG9SZzjbsqaKN6wI6rFO7z/spc/l3OVKSlX084_Gg7RNBPjLvPwaBTinWDTB_e0mHZ4ltYRldw8fKG1wspbimB5mVFSNMsh/vprv/1/playlist_type/DVR/met/1755915112,/mh/40/mm/44/mn/sn-vgqsrnzz/ms/lva/mv/u/mvi/3/pl/24/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51552689,51565115,51565682,51580968/mt/1755914448/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,siu,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIgMvYg0VIRpK_KWPx_plSA575uJv9VVeULLa33hq092ZkCIQDQcptTimXH_Nqz6Oakmknp5jyN2TVN1iRvkRJWkR94zA%3D%3D/lsparams/hls_chunk_host,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRAIgU02RcLl4rihTwntQkWL7fp5KfQbymQo8VLAvqPiaRm4CIEK2Yz_qZV4M5mYoCz9IZxhacDtTGxlmrVmGLhhA3qE_/playlist/index.m3u8
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1755942255/ei/DzmpaKrNIs6tsfIPnLXWuAw/ip/52.159.247.198/id/vr3XyVCR4T0.2/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr9---sn-ojn4v5-5g.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/siu/1/bui/AY1jyLPpoZvMBbfuat3P73h1A9ODM6_0isUiFYQnTo3roGQeF35c2KqkvSIu6cIu4N1m1M5Q/spc/l3OVKXb4XjWzE_zJCD0tdWPgkNYYDEhGABkOkVgm85_GsJN069Ha5Tj3iYRLUAHz37P9/vprv/1/playlist_type/DVR/met/1755920656,/mh/40/mm/44/mn/sn-ojn4v5-5g/ms/lva/mv/u/mvi/9/pl/20/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51552689,51565115,51565682,51580968/mt/1755920304/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,siu,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIhAPY62Lbvh3Zt7ZPjm0NSYerAbnWA3G5crBUodoOY1CK6AiAtMiZNjgAugiYP8Qq4g7HWnZeZ-iEHq30fmwLsfhdbog%3D%3D/lsparams/hls_chunk_host,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgHlfSPuKW0b0gT-Looy1FHESiZ0Dzd9lfT3_paZuir2QCIQCx_4g8gxHE-tmrR7F9ksBDCvGeHfHWkx2w1-kTCTPD_Q%3D%3D/playlist/index.m3u8
