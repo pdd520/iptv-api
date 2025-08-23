@@ -32,7 +32,7 @@ def append_to_m3u_file(channels, target_file="output/rtp/shanghai.m3u"):
         updated_lines = []
         skip_next = False
         for line in lines:
-            if any(name in line for name in ["中天电视-1", "中天电视-2", "中天新闻"]):
+            if any(name in line for name in ["中天电视", "中天新闻"]):
                 skip_next = True
                 continue
             if skip_next:
@@ -74,7 +74,7 @@ def append_to_shanghai_txt(channels, target_file="config/rtp/shanghai.txt"):
         lines = existing_content.splitlines()
         updated_lines = [
             line for line in lines 
-            if not any(name in line for name in ["中天电视-1", "中天电视-2", "中天新闻"])
+            if not any(name in line for name in ["中天电视", "中天新闻"])
         ]
         existing_content = "\n".join(updated_lines)
         # 追加新频道条目
@@ -97,26 +97,16 @@ def append_to_shanghai_txt(channels, target_file="config/rtp/shanghai.txt"):
     print(f"频道已追加到 {target_file}")
 
 def main():
-    # 定义三个频道的YouTube链接和台标
+    # 定义中天电视频道的YouTube链接和台标
     channel_data = [
         {
-            "name": "中天电视-1",
+            "name": "中天电视",
             "url": "https://www.youtube.com/watch?v=vr3XyVCR4T0",
-            "logo": "https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CtiTV.png"
-        },
-        {
-            "name": "中天新闻",
-            "url": "https://www.youtube.com/watch?v=Df9kT_HB2NY",
             "logo": "https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CtiNews.png"
-        },
-        {
-            "name": "中天电视-2",
-            "url": "https://www.youtube.com/watch?v=U-NFviWcoQY",
-            "logo": "https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CtiTV.png"
         }
     ]
 
-    # 获取每个频道的直播流地址
+    # 获取频道的直播流地址
     for channel in channel_data:
         stream_url = get_stream_url(channel["url"])
         channel["stream_url"] = stream_url if stream_url else ""
