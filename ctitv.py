@@ -1,16 +1,16 @@
 import subprocess
 import os
 import time
-import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 def setup_selenium():
-    """设置 Selenium WebDriver"""
+    """设置 Selenium WebDriver（使用 webdriver-manager）"""
     chrome_options = Options()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -18,46 +18,12 @@ def setup_selenium():
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--window-size=1920,1080")
     chrome_options.add_argument("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
-    
-    # 设置中文语言
     chrome_options.add_argument("--lang=zh-CN")
     
-    driver = webdriver.Chrome(options=chrome_options)
+    # 使用 webdriver-manager 自动管理驱动
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
-
-def auto_solve_captcha(driver):
-    """尝试自动处理验证码（基础版本）"""
-    try:
-        # 检查是否有验证码页面
-        if "verify" in driver.current_url or "captcha" in driver.current_url.lower():
-            print("检测到验证码页面，尝试自动处理...")
-            
-            # 等待验证码元素加载
-            time.sleep(5)
-            
-            # 尝试点击可能的验证按钮
-            try:
-                verify_button = driver.find_element(By.XPATH, "//button[contains(text(), '验证')]")
-                verify_button.click()
-                print("点击验证按钮")
-                time.sleep(3)
-            except:
-                pass
-                
-            # 尝试点击 "我不是机器人" 按钮
-            try:
-                not_robot = driver.find_element(By.XPATH, "//div[contains(text(), '我不是机器人')]")
-                not_robot.click()
-                print("点击'我不是机器人'")
-                time.sleep(3)
-            except:
-                pass
-                
-            return True
-    except Exception as e:
-        print(f"验证码处理失败: {e}")
-    
-    return False
 
 def get_fresh_cookies():
     """自动获取新的 YouTube cookies"""
@@ -69,13 +35,10 @@ def get_fresh_cookies():
         # 访问 YouTube 主页
         driver.get("https://www.youtube.com")
         print("访问 YouTube 主页")
-        time.sleep(3)
+        time.sleep(5)  # 增加等待时间
         
-        # 检查是否需要验证
-        auto_solve_captcha(driver)
-        
-        # 等待页面加载完成
-        WebDriverWait(driver, 10).until(
+        # 等待页面加载
+        WebDriverWait(driver, 15).until(
             EC.presence_of_element_located((By.TAG_NAME, "body"))
         )
         
@@ -86,10 +49,16 @@ def get_fresh_cookies():
         with open('cookies.txt', 'w') as f:
             f.write("# Netscape HTTP Cookie File\n")
             for cookie in cookies:
-                if cookie['domain'].endswith('youtube.com'):
-                    f.write(f"{cookie['domain']}\tTRUE\t/\tTRUE\t{cookie.get('expiry', '0')}\t{cookie['name']}\t{cookie['value']}\n")
+                if 'youtube.com' in cookie.get('domain', ''):
+                    expiry = cookie.get('expiry', 0)
+                    if isinstance(expiry, (int, float)) and expiry > 0:
+                        expiry = int(expiry)
+                    else:
+                        expiry = 0
+                    
+                    f.write(f"{cookie['domain']}\tTRUE\t/\tTRUE\t{expiry}\t{cookie['name']}\t{cookie['value']}\n")
         
-        print(f"成功获取 {len(cookies)} 个 cookies")
+        print(f"成功获取 {len([c for c in cookies if 'youtube.com' in c.get('domain', '')])} 个 YouTube cookies")
         return True
         
     except Exception as e:
