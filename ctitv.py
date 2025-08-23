@@ -1,7 +1,6 @@
 import subprocess
 import os
 import time
-import json
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -150,21 +149,111 @@ def get_stream_url_advanced(youtube_url):
             # 如果失败，获取新的 cookies
             if attempt < max_retries - 1:
                 print(f"尝试 {attempt + 1} 失败，获取新的完整 cookies...")
-                get_fresh_cookies()  # 这里使用正确的函数名
+                get_fresh_cookies()
                 time.sleep(3)
                 
         except subprocess.CalledProcessError as e:
             print(f"❌ 尝试 {attempt + 1} 失败")
             if attempt < max_retries - 1:
-                get_fresh_cookies()  # 这里使用正确的函数名
+                get_fresh_cookies()
                 time.sleep(3)
         except Exception as e:
             print(f"❌ 尝试 {attempt + 1} 错误: {e}")
             if attempt < max_retries - 1:
-                get_fresh_cookies()  # 这里使用正确的函数名
+                get_fresh_cookies()
                 time.sleep(3)
     
     return None
+
+def get_stream_url(youtube_url):
+    """获取 YouTube 直播流地址"""
+    print(f"正在处理: {youtube_url}")
+    return get_stream_url_advanced(youtube_url)
+
+def append_to_m3u_file(channels, target_file="output/rtp/shanghai.m3u"):
+    """将频道信息追加到目标 M3U 文件的底部"""
+    os.makedirs(os.path.dirname(target_file), exist_ok=True)
+
+    if os.path.exists(target_file):
+        with open(target_file, "r", encoding="utf-8") as f:
+            existing_content = f.read()
+        
+        lines = existing_content.splitlines()
+        updated_lines = []
+        skip_next = False
+        for line in lines:
+            if any(name in line for name in ["中天电视-1", "中天电视-2", "中天新闻"]):
+                skip_next = True
+                continue
+            if skip_next:
+                skip_next = False
+                continue
+            updated_lines.append(line)
+        
+        existing_content = "\n".join(updated_lines)
+        valid_channels = [channel for channel in channels if channel.get("stream_url")]
+        if valid_channels:
+            new_entries = "\n".join([
+                f'#EXTINF:-1 tvg-name="{channel["name"]}" tvg-logo="{channel["logo"]}" group-title="📺专题频道", {channel["name"]}\n{channel["stream_url"]}'
+                for channel in valid_channels
+            ])
+            updated_content = existing_content.rstrip() + "\n" + new_entries
+        else:
+            updated_content = existing_content
+    else:
+        valid_channels = [channel for channel in channels if channel.get("stream_url")]
+        if valid_channels:
+            new_entries = "\n".join([
+                f'#EXTINF:-1 tvg-name="{channel["name"]}" tvg-logo="{channel["logo"]}" group-title="📺专题频道", {channel["name"]}\n{channel["stream_url"]}'
+                for channel in valid_channels
+            ])
+            updated_content = f"""#EXTM3U
+{new_entries}"""
+        else:
+            updated_content = "#EXTM3U"
+
+    with open(target_file, "w", encoding="utf-8") as f:
+        f.write(updated_content)
+    print(f"频道已更新到 {target_file}")
+
+def append_to_shanghai_txt(channels, target_file="config/rtp/shanghai.txt"):
+    """将频道信息追加到 config/rtp/shanghai.txt 文件的底部"""
+    os.makedirs(os.path.dirname(target_file), exist_ok=True)
+
+    if os.path.exists(target_file):
+        with open(target_file, "r", encoding="utf-8") as f:
+            existing_content = f.read()
+        
+        lines = existing_content.splitlines()
+        updated_lines = [
+            line for line in lines 
+            if not any(name in line for name in ["中天电视-1", "中天电视-2", "中天新闻"])
+        ]
+        existing_content = "\n".join(updated_lines)
+        
+        valid_channels = [channel for channel in channels if channel.get("stream_url")]
+        if valid_channels:
+            new_entries = "\n".join([
+                f'{channel["name"]},{channel["stream_url"]}'
+                for channel in valid_channels
+            ])
+            updated_content = existing_content.rstrip() + "\n" + new_entries
+        else:
+            updated_content = existing_content
+    else:
+        valid_channels = [channel for channel in channels if channel.get("stream_url")]
+        if valid_channels:
+            new_entries = "\n".join([
+                f'{channel["name"]},{channel["stream_url"]}'
+                for channel in valid_channels
+            ])
+            updated_content = new_entries
+        else:
+            updated_content = ""
+
+    with open(target_file, "w", encoding="utf-8") as f:
+        f.write(updated_content)
+    print(f"频道已更新到 {target_file}")
 
 def main():
     # 定义三个频道的YouTube链接和台标
@@ -187,7 +276,7 @@ def main():
     ]
 
     # 先获取一次新鲜的 cookies
-    get_fresh_cookies()  # 这里使用正确的函数名
+    get_fresh_cookies()
 
     # 获取每个频道的直播流地址
     for channel in channel_data:
