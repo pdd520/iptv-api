@@ -45,20 +45,35 @@ jobs:
           which chromedriver || echo "ChromeDriver not found"
 
       - name: Run script to update CTITV stream
+        run: python ctitv.py
+
+      - name: Debug cookies file
         run: |
-          # 使用 webdriver-manager 自动管理浏览器驱动
+          if [ -f "cookies.txt" ]; then
+            echo "Cookies file content:"
+            cat cookies.txt
+            echo "---"
+            echo "Number of lines: $(wc -l cookies.txt)"
+          else
+            echo "No cookies.txt file found"
+          fi
+
+      - name: Test cookies validity
+        run: |
           python -c "
-          from webdriver_manager.chrome import ChromeDriverManager
-          from selenium import webdriver
-          from selenium.webdriver.chrome.service import Service
-          import os
-          
-          # 设置 ChromeDriver
-          driver_path = ChromeDriverManager().install()
-          os.environ['WEBDRIVER_CHROME_DRIVER'] = driver_path
-          print(f'ChromeDriver installed at: {driver_path}')
+          import subprocess
+          test_url = 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+          try:
+              result = subprocess.run(['yt-dlp', '--get-url', '--cookies', 'cookies.txt', test_url], 
+                                    capture_output=True, text=True, timeout=30)
+              print('Test result:', result.returncode)
+              if result.stdout:
+                  print('Output:', result.stdout[:100])
+              if result.stderr:
+                  print('Error:', result.stderr[:200])
+          except Exception as e:
+              print('Test failed:', e)
           "
-          python ctitv.py
 
       - name: Create conversion script
         run: |
