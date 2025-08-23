@@ -22,58 +22,23 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
-          python -m pip install yt-dlp selenium webdriver-manager
+          python -m pip install yt-dlp  # 只需要 yt-dlp，selenium 相关已移除
 
       - name: Create output directory
         run: mkdir -p output/rtp config/rtp
 
-      - name: Set up Chrome driver (safe method)
-        run: |
-          # 检查是否已安装 Chrome，如果已安装则使用现有版本
-          if [ ! -f "/usr/bin/google-chrome" ]; then
-            sudo ln -s /usr/bin/chromium-browser /usr/bin/google-chrome
-          fi
-          
-          # 设置 chromedriver
-          if [ ! -f "/usr/bin/chromedriver" ]; then
-            sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
-          fi
-          
-          # 验证安装
-          which google-chrome || echo "Google Chrome not found"
-          which chromedriver || echo "ChromeDriver not found"
-
       - name: Run script to update CTITV stream
-        run: python ctitv.py
+        run: python ctitv.py  # 直接运行，不需要 selenium 设置
 
-      - name: Debug cookies file
+      # 以下调试步骤可以保留用于诊断
+      - name: Debug output files
         run: |
+          echo "Generated files:"
+          ls -la output/rtp/ || echo "No output directory"
+          ls -la config/rtp/ || echo "No config directory"
           if [ -f "cookies.txt" ]; then
-            echo "Cookies file content:"
-            cat cookies.txt
-            echo "---"
-            echo "Number of lines: $(wc -l cookies.txt)"
-          else
-            echo "No cookies.txt file found"
+            echo "Cookies file exists (size: $(wc -l cookies.txt) lines)"
           fi
-
-      - name: Test cookies validity
-        run: |
-          python -c "
-          import subprocess
-          test_url = 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
-          try:
-              result = subprocess.run(['yt-dlp', '--get-url', '--cookies', 'cookies.txt', test_url], 
-                                    capture_output=True, text=True, timeout=30)
-              print('Test result:', result.returncode)
-              if result.stdout:
-                  print('Output:', result.stdout[:100])
-              if result.stderr:
-                  print('Error:', result.stderr[:200])
-          except Exception as e:
-              print('Test failed:', e)
-          "
 
       - name: Create conversion script
         run: |
