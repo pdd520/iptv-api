@@ -41,7 +41,7 @@ jobs:
           fi
 
       - name: Run RTP to M3U conversion script
-        run: python config/rtp/convert_rtp_to_m3u.py
+        run: python config/convert_rtp_to_m3u.py
 
       - name: Run script to update CTITV stream
         run: python ctitv.py
