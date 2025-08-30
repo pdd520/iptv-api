@@ -1,5 +1,5 @@
 #EXTM3U
-#Created by GitHub Actions: 2025-08-30 03:05:17 UTC
+#Created by GitHub Actions: 2025-08-30 03:27:45 UTC
 #Source: 上海_电信
 
 #EXTINF:-1 tvg-name="CCTV-1" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CCTV1.png" group-title="📺央视频道",CCTV1综合
@@ -100,3 +100,5 @@ rtp://239.45.1.232:5140
 rtp://239.45.1.230:5140
 #EXTINF:-1 tvg-name="黑龙江卫视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/黑龙江卫视.png" group-title="📺卫视频道",黑龙江卫视
 rtp://239.45.3.232:5140
+#EXTINF:-1 tvg-name="中天电视" tvg-logo="https://raw.githubusercontent.com/pdd520/iptv-api/master/tv/CtiNews.png" group-title="📺专题频道", 中天电视
+https://manifest.googlevideo.com/api/manifest/hls_playlist/expire/1756546068/ei/tG-yaJbMLIqDruEPw7TAwQY/ip/64.236.134.48/id/vr3XyVCR4T0.2/itag/96/source/yt_live_broadcast/requiressl/yes/ratebypass/yes/live/1/sgoap/gir%3Dyes%3Bitag%3D140/sgovp/gir%3Dyes%3Bitag%3D137/rqh/1/hls_chunk_host/rr3---sn-vgqsrnzz.googlevideo.com/xpc/EgVo2aDSNQ%3D%3D/playlist_duration/30/manifest_duration/30/siu/1/bui/AY1jyLMMqjM2vbfLAxhGFK4VSpZOPqps4nqQc0EgCA2y4lgQRF2jir8M1_ZUp63__r5_gmUj/spc/l3OVKRyJPCuLm7zKOnaeR3xF2c7Och1PSVvfI5JP6kyFRQbb2g9Ab_fwSkxkAh1l0C0D/vprv/1/playlist_type/DVR/met/1756524469,/mh/40/mm/44/mn/sn-vgqsrnzz/ms/lva/mv/u/mvi/3/pl/17/rms/lva,lva/dover/11/pacing/0/keepalive/yes/fexp/51355912,51552689,51565115,51565682,51580968/mt/1756524120/sparams/expire,ei,ip,id,itag,source,requiressl,ratebypass,live,sgoap,sgovp,rqh,xpc,playlist_duration,manifest_duration,siu,bui,spc,vprv,playlist_type/sig/AJfQdSswRQIhANEoutQi1sFnK1A4qeE8-ogHj4snNlPk9HImBmmEZRsqAiAcZYRq1MbHm4R9BGcQJgOET-l4T9VNgp4_L7_PNVXzEA%3D%3D/lsparams/hls_chunk_host,met,mh,mm,mn,ms,mv,mvi,pl,rms/lsig/APaTxxMwRQIgYtrTW3rxWmow2G-v1hdu-JJs8byykjLVQiCscDYyyY0CIQD8osTPfjq2VSuJV98VNjLNfXTj4-naTiDS1O1tGsG5pg%3D%3D/playlist/index.m3u8
