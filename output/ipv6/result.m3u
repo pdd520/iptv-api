@@ -1,5 +1,5 @@
 #EXTM3U x-tvg-url="https://raw.githubusercontent.com/pdd520/iptv-api/refs/heads/master/output/epg/epg.gz"
-#EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV1.png" group-title="🕘️更新时间",2025-12-19 10:10:20
+#EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV1.png" group-title="🕘️更新时间",2025-12-19 14:45:33
 http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
 #EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV1.png" group-title="📺央视频道",CCTV-1
 http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
@@ -160,7 +160,7 @@ http://tvpull.dxhmt.cn:9081/tv/11425-1.m3u8
 #EXTINF:-1 tvg-name="河南卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png" group-title="📡卫视频道",河南卫视
 https://zby.130519.xyz/PLTV/11/224/3221226132/index.m3u8
 #EXTINF:-1 tvg-name="河南卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png" group-title="📡卫视频道",河南卫视
-http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=3e70e10d94c46eaf4e4be9f73f09e8cc&wsTime=1766124037
+http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=541a369e63558b1ad1a71aae1fb14cdb&wsTime=1766138443
 #EXTINF:-1 tvg-name="吉林卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/吉林卫视.png" group-title="📡卫视频道",吉林卫视
 https://zby.130519.xyz/PLTV/11/224/3221226149/index.m3u8
 #EXTINF:-1 tvg-name="吉林卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/吉林卫视.png" group-title="📡卫视频道",吉林卫视
@@ -181,6 +181,8 @@ http://iptv.huuc.edu.cn/hls/lnhd.m3u8
 https://zby.130519.xyz/PLTV/11/224/3221225747/index.m3u8
 #EXTINF:-1 tvg-name="内蒙古卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/内蒙古卫视.png" group-title="📡卫视频道",内蒙古卫视
 https://iptv.catvod.com/live.php?id=%E5%86%85%E8%92%99%E5%8F%A4%E5%8D%AB%E8%A7%86%E5%8F%B0
+#EXTINF:-1 tvg-name="青海卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/青海卫视.png" group-title="📡卫视频道",青海卫视
+http://lu.wqwqwq.sbs/itv/1000000002000013359.m3u8?cdn=ystenlive
 #EXTINF:-1 tvg-name="青海卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/青海卫视.png" group-title="📡卫视频道",青海卫视
 https://zby.130519.xyz/PLTV/11/224/3221226105/index.m3u8
 #EXTINF:-1 tvg-name="山东卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/山东卫视.png" group-title="📡卫视频道",山东卫视
@@ -209,6 +211,8 @@ https://zby.130519.xyz/PLTV/11/224/3221225742/index.m3u8
 https://iptv.catvod.com/live.php?id=%E6%96%B0%E7%96%86%E5%8D%AB%E8%A7%86%E5%8F%B0
 #EXTINF:-1 tvg-name="云南卫视" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/云南卫视.png" group-title="📡卫视频道",云南卫视
 https://zby.130519.xyz/PLTV/11/224/3221226109/index.m3u8
+#EXTINF:-1 tvg-name="中天新闻" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/中天新闻.png" group-title="☘️港澳台频道",中天新闻
+http://bxtv.3a.ink/api.php?id=ztxw
 #EXTINF:-1 tvg-name="中天新闻" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/中天新闻.png" group-title="☘️港澳台频道",中天新闻
 https://www.youtube.com/watch?v=vr3XyVCR4T0
 #EXTINF:-1 tvg-name="中視新聞" tvg-logo="https://gitee.com/mytv-android/myTVlogo/raw/main/img/中視新聞.png" group-title="☘️港澳台频道",中視新聞
