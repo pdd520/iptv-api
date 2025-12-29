@@ -226,6 +226,18 @@ class UpdateSource:
         if self.stop_event:
             self.stop_event.set()
 
+    async def scheduler(self, stop_event):
+        self.stop_event = stop_event
+        while not stop_event.is_set():
+            self.now = datetime.datetime.now(pytz.timezone(config.time_zone))
+            await self.main()
+            next_time = self.now + datetime.timedelta(hours=config.update_interval)
+            print(f"🕒 Next update time: {next_time:%Y-%m-%d %H:%M:%S}")
+            try:
+                await asyncio.wait_for(stop_event.wait(), timeout=config.update_interval * 3600)
+            except asyncio.TimeoutError:
+                continue
+
 
 if __name__ == "__main__":
     info = get_version_info()
