@@ -20,7 +20,6 @@ CCTV-3,https://hls-gateway.vpstv.net/streams/476883.m3u8
 CCTV-3,https://smart.pendy.dpdns.org/Smart.php
 CCTV-4,http://iptv.huuc.edu.cn/hls/cctv4hd.m3u8
 CCTV-4,https://zby.130519.xyz/PLTV/11/224/3221226124/index.m3u8
-CCTV-4,https://dash2.antik.sk/live/test_cctv_tizen/playlist.m3u8
 CCTV-4,http://lu.wqwqwq.sbs/itv/1000000005000265004.m3u8?cdn=ystenlive
 CCTV-4,http://3501776.xyz:35455/itv/1000000005000265004.m3u8?cdn=ystenlive
 CCTV-4,https://hls-gateway.vpstv.net/streams/476884.m3u8
@@ -95,6 +94,7 @@ CCTV-15,https://hls-gateway.vpstv.net/streams/476901.m3u8
 CCTV-15,http://lu.wqwqwq.sbs/itv/1000000005000265014.m3u8?cdn=ystenlive
 CCTV-15,http://3501776.xyz:35455/itv/1000000005000265014.m3u8?cdn=ystenlive
 CCTV-15,https://smart.pendy.dpdns.org/Smart.php
+CCTV-16,http://livetv.wqwqwq.sbs/gaoma/cctv4k16.m3u8
 CCTV-16,https://zby.130519.xyz/PLTV/11/224/3221226120/index.m3u8
 CCTV-16,https://hls-gateway.vpstv.net/streams/709089.m3u8
 CCTV-16,https://yunmei.tv/main/cctv-16.m3u8
@@ -169,6 +169,7 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 甘肃卫视,https://hls.gstv.com.cn/49048r/6e1sy2.m3u8
 广西卫视,https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8
 广西卫视,https://zby.130519.xyz/PLTV/11/224/3221226084/index.m3u8
+广西卫视,https://hlscdn.liangtv.cn/live/0c4ef3a44b934cacb8b47121dfada66c/d7e04258157b480dae53883cc6f8123b.m3u8
 广西卫视,https://mobilelive.gxtv.cn/live/gx_live1004/playlist.m3u8
 广西卫视,https://hls-gateway.vpstv.net/streams/708864.m3u8
 广西卫视,https://smart.pendy.dpdns.org/Smart.php
@@ -186,11 +187,12 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 河北卫视,https://jwplay.hebyun.com.cn/live/hbwstv/1500k/tzwj_video.m3u8
 河北卫视,http://lu.wqwqwq.sbs/itv/5000000006000040016.m3u8?cdn=bestzb
 河北卫视,http://live.wqwqwq.sbs/itv/5000000006000040016.m3u8?cdn=bestzb
+河北卫视,https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1768098402&k=b48cea03df2ae6d284be90352304ce32
 河北卫视,https://hls-gateway.vpstv.net/streams/476920.m3u8
 河北卫视,https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1963555056&k=a2a2ee6412906c8b2d9a6fd19116c6d9
 河南卫视,http://tvpull.dxhmt.cn:9081/tv/11425-1.m3u8
 河南卫视,https://zby.130519.xyz/PLTV/11/224/3221226132/index.m3u8
-河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=b10ce32f08b8328ed4a91b4baf698b6d&wsTime=1768082446
+河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=1d9c25201cd220655b8a67a3fd50ed7e&wsTime=1768111195
 河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=04e32a3bd883f58fb71ed009a6a8b7c6&wsTime=1740891619
 河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=e4d37ab1c90aa54f7004dc1adc5e2bf7&wsTime=1740805221
 河南卫视,https://hls-gateway.vpstv.net/streams/708871.m3u8
@@ -310,4 +312,4 @@ TVBS NEWS,https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV82.m3u8
 射雕英雄传,https://live.metshop.top/yy/40959929
 
 🕘️更新时间,#genre#
-2026-01-11 03:29:50,http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
+2026-01-11 11:18:20,http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
