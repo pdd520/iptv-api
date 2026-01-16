@@ -8,6 +8,7 @@ CCTV-1,https://hls-gateway.vpstv.net/streams/476879.m3u8
 CCTV-1,https://smart.pendy.dpdns.org/Smart.php
 CCTV-2,http://iptv.huuc.edu.cn/hls/cctv2hd.m3u8
 CCTV-2,https://zby.130519.xyz/PLTV/11/224/3221226122/index.m3u8
+CCTV-2,http://pull-flv-f1.douyincdn.com/media/stream-695106910011261612.flv?arch_hrchy=w1&exp_hrchy=w1&keeptime=00093a80&major_anchor_level=common&t_id=037-20260114100308192594C57677D9CCE8DA-vujvxt&unique_id=stream-695106910011261612_684_flv&wsSecret=fc06766784777da294247d06ae30f581&wsTime=6966f95d
 CCTV-2,http://3501776.xyz:35455/gaoma/cctv2.m3u8
 CCTV-2,http://hlsbkmgsplive.miguvideo.com/wd_r2/cctv/cctv2hd/1500/index.m3u8?&encrypt=
 CCTV-2,http://lu.wqwqwq.sbs/itv/1000000001000023315.m3u8?cdn=ystenlive
@@ -20,6 +21,7 @@ CCTV-3,https://hls-gateway.vpstv.net/streams/476883.m3u8
 CCTV-3,https://smart.pendy.dpdns.org/Smart.php
 CCTV-4,http://iptv.huuc.edu.cn/hls/cctv4hd.m3u8
 CCTV-4,https://zby.130519.xyz/PLTV/11/224/3221226124/index.m3u8
+CCTV-4,https://dash2.antik.sk/live/test_cctv_tizen/playlist.m3u8
 CCTV-4,http://lu.wqwqwq.sbs/itv/1000000005000265004.m3u8?cdn=ystenlive
 CCTV-4,http://3501776.xyz:35455/itv/1000000005000265004.m3u8?cdn=ystenlive
 CCTV-4,https://hls-gateway.vpstv.net/streams/476884.m3u8
@@ -32,6 +34,7 @@ CCTV-5,https://hls-gateway.vpstv.net/streams/476885.m3u8
 CCTV-5,https://smart.pendy.dpdns.org/Smart.php
 CCTV-6,http://iptv.huuc.edu.cn/hls/cctv6hd.m3u8
 CCTV-6,https://zby.130519.xyz/PLTV/11/224/3221225741/index.m3u8
+CCTV-6,http://pull-hs-f5.flive.douyincdn.com/media/stream-695136636620505772/index.m3u8?arch_hrchy=w1&exp_hrchy=w1&expire=1769036350&major_anchor_level=common&sign=885e193653aa0618ba5e6cc9642df55e&t_id=037-20260115065909EE0FD10FEE16A7461774-rUFdkF&volcSecret=885e193653aa0618ba5e6cc9642df55e&volcTime=1769036350
 CCTV-6,http://mobilelive-timeshift.ysp.cctv.cn/timeshift/ysp/2013693901/timeshift.m3u8?delay=0
 CCTV-6,http://cdn.jdshipin.com:8880/ysp.php?id=cctv6
 CCTV-6,http://mobilelive-timeshift.ysp.cctv.cn/timeshift/ysp/2013693901/timeshift.m3u8?delay=0&cdn=5202
@@ -82,7 +85,6 @@ CCTV-13,https://smart.pendy.dpdns.org/Smart.php
 CCTV-14,http://iptv.huuc.edu.cn/hls/cctv14hd.m3u8
 CCTV-14,https://zby.130519.xyz/PLTV/11/224/3221225738/index.m3u8
 CCTV-14,https://event.pull.hebtv.com/jishi/cp2.m3u8
-CCTV-14,https://event.pull.hebtv.com/jishi/cp2.m3u8#rtsp://103.251.96.71/PLTV/88888888/224/3221225783/10000100000000060000000000726027_0.smil?icpid=SSPID&amp;accounttype=1&amp;limitflux=-1&amp;limitdur=-1&amp;accountinfo=:20240213104135
 CCTV-14,https://hls-gateway.vpstv.net/streams/476900.m3u8
 CCTV-14,http://3501776.xyz:35455/gaoma/cctv14.m3u8
 CCTV-14,http://lu.wqwqwq.sbs/itv/1000000005000265013.m3u8?cdn=ystenlive
@@ -136,7 +138,6 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 湖北卫视,https://hls-gateway.vpstv.net/streams/476198.m3u8
 湖北卫视,https://smart.pendy.dpdns.org/Smart.php
 黑龙江卫视,http://iptv.huuc.edu.cn/hls/hljhd.m3u8
-黑龙江卫视,https://idclive.hljtv.com:4430/live/hljws_own.m3u8
 黑龙江卫视,https://hls-gateway.vpstv.net/streams/708854.m3u8
 黑龙江卫视,http://lu.wqwqwq.sbs/itv/1000000001000001925.m3u8?cdn=ystenlive
 安徽卫视,http://iptv.huuc.edu.cn/hls/ahhd.m3u8
@@ -157,6 +158,7 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 东南卫视,http://iptv.huuc.edu.cn/hls/dnhd.m3u8
 东南卫视,https://zby.130519.xyz/PLTV/11/224/3221225745/index.m3u8
 东南卫视,http://live.zohi.tv/video/s10001-fztv-3/index.m3u8
+东南卫视,https://hlsbkmgsplive.miguvideo.com/migu/kailu/dongnanws/51/20230724/01.m3u8?&HlsSubType=&encrypt=
 东南卫视,http://3501776.xyz:35455/itv/1000000005000265033.m3u8?cdn=ystenlive
 东南卫视,http://lu.wqwqwq.sbs/itv/1000000005000265033.m3u8?cdn=ystenlive
 东南卫视,https://hls-gateway.vpstv.net/streams/708823.m3u8
@@ -166,7 +168,6 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 甘肃卫视,https://hls.gstv.com.cn/49048r/6e1sy2.m3u8
 广西卫视,https://hlscdn.liangtv.cn/live/de0f97348eb84f62aa6b7d8cf0430770/dd505d87880c478f901f38560ca4d4e6.m3u8
 广西卫视,https://zby.130519.xyz/PLTV/11/224/3221226084/index.m3u8
-广西卫视,https://mobilelive.gxtv.cn/live/gx_live1004/playlist.m3u8
 广西卫视,https://hls-gateway.vpstv.net/streams/708864.m3u8
 广西卫视,https://smart.pendy.dpdns.org/Smart.php
 贵州卫视,https://zby.130519.xyz/PLTV/11/224/3221226173/index.m3u8
@@ -182,14 +183,14 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 河北卫视,http://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=2510710360&k=3d44740039027301acf8341d7361ab59
 河北卫视,http://lu.wqwqwq.sbs/itv/5000000006000040016.m3u8?cdn=bestzb
 河北卫视,http://live.wqwqwq.sbs/itv/5000000006000040016.m3u8?cdn=bestzb
-河北卫视,https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1768503702&k=16f87dd37693ceea70653b051adb6ef4
 河北卫视,https://hls-gateway.vpstv.net/streams/476920.m3u8
 河北卫视,https://tv.pull.hebtv.com/jishi/weishipindao.m3u8?t=1963555056&k=a2a2ee6412906c8b2d9a6fd19116c6d9
 河南卫视,https://zby.130519.xyz/PLTV/11/224/3221226132/index.m3u8
-河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=6bf867babfdb58dc6bfc8280da5d6acb&wsTime=1768514457
+河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=a927421dc977b3dfeb2b5ee9f2709dc6&wsTime=1768543261
 河南卫视,http://tvpull.dxhmt.cn:9081/tv/11425-1.m3u8
 河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=04e32a3bd883f58fb71ed009a6a8b7c6&wsTime=1740891619
 河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=e4d37ab1c90aa54f7004dc1adc5e2bf7&wsTime=1740805221
+河南卫视,http://tvcdn.stream3.hndt.com/tv/65c4a6d5017e1000b2b6ea2500000000_transios/playlist.m3u8?wsSecret=de14310183e127b19e93c28fe3c51c29&wsTime=1768542599
 河南卫视,https://hls-gateway.vpstv.net/streams/708871.m3u8
 吉林卫视,https://zby.130519.xyz/PLTV/11/224/3221226149/index.m3u8
 吉林卫视,https://hls-gateway.vpstv.net/streams/708844.m3u8
@@ -206,6 +207,7 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 江西卫视,https://hls-gateway.vpstv.net/streams/708831.m3u8
 辽宁卫视,http://iptv.huuc.edu.cn/hls/lnhd.m3u8
 辽宁卫视,https://zby.130519.xyz/PLTV/11/224/3221225747/index.m3u8
+辽宁卫视,https://hlsbkmgsplive.miguvideo.com/migu/kailu/lnwshd265/54/20200407/01.m3u8?&HlsSubType=&encrypt=
 辽宁卫视,http://3501776.xyz:35455/itv/1000000005000265022.m3u8?cdn=ystenlive
 辽宁卫视,http://lu.wqwqwq.sbs/itv/1000000005000265022.m3u8?cdn=ystenlive
 辽宁卫视,https://hls-gateway.vpstv.net/streams/708828.m3u8
@@ -215,6 +217,7 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 青海卫视,https://hls-gateway.vpstv.net/streams/708825.m3u8
 山东卫视,http://iptv.huuc.edu.cn/hls/sdhd.m3u8
 山东卫视,https://zby.130519.xyz/PLTV/11/224/3221225733/index.m3u8
+山东卫视,https://hlsbkmgsplive.miguvideo.com/wd_r4/yg/shandongwshd/3000/01.m3u8?&HlsSubType=&encrypt=
 山东卫视,http://3501776.xyz:35455/itv/1000000005000265019.m3u8?cdn=ystenlive
 山东卫视,http://lu.wqwqwq.sbs/itv/1000000005000265019.m3u8?cdn=ystenlive
 山东卫视,https://hls-gateway.vpstv.net/streams/708860.m3u8
@@ -242,7 +245,6 @@ CCTV-5+,https://smart.pendy.dpdns.org/Smart.php
 新疆卫视,http://nas.jdshipin.com:8801/xjtv.php?id=xjws
 新疆卫视,http://cdn.jdshipin.com:8880/ysp.php?id=xjws
 云南卫视,https://zby.130519.xyz/PLTV/11/224/3221226109/index.m3u8
-云南卫视,https://zby.130519.xyz/PLTV/11/224/3221226151/index.m3u8
 云南卫视,http://live.wqwqwq.sbs/itv/5000000011000031120.m3u8?cdn=bestzb
 云南卫视,https://hls-gateway.vpstv.net/streams/708863.m3u8
 
@@ -305,4 +307,4 @@ TVBS NEWS,https://raw.githubusercontent.com/ChiSheng9/iptv/master/TV82.m3u8
 射雕英雄传,https://live.metshop.top/yy/40959929
 
 🕘️更新时间,#genre#
-2026-01-16 03:39:10,http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
+2026-01-16 11:05:02,http://iptv.huuc.edu.cn/hls/cctv1hd.m3u8
